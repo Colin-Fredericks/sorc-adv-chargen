@@ -5,7 +5,7 @@
     <title>Sorcerously Advanced Character Generator</title>
     <script src="jquery-3.3.1.min.js"></script>
     <script src="chargen.js"></script>
-    <link href="chargen.css" type="text/css" />
+    <link rel="stylesheet" href="chargen.css" type="text/css" />
   </head>
   <body>
     <h1>Character Generator</h1>
@@ -20,6 +20,7 @@
 
       <div class="civblock">
         <select id="civselector">
+          <option id="nociv" value="nociv" selected>-- Select a civilization --</option>
           <option id="cult" value="Cult">the Cult of the Empty Grave</option>
           <option id="diadem" value="Diadem">Diadem</option>
           <option id="geometers" value="Geometers Guild"
@@ -82,7 +83,7 @@
 
       <h2>Core Values</h2>
 
-      <div class="core-values">
+      <div id="core-values">
         <span class="cv-pair">
           <input id="cv1" type="text" name="cv1" value="(from civilization)" />
           <input id="cv1_val" aria-label="value" type="number" />
@@ -117,37 +118,34 @@
 
       <h2>Natures</h2>
 
-      <div class="nature_scores">
-        <label
-          >Communion-nature
-          <input id="communion" type="number" name="communion" />
-          <input id="communion-aspect" type="text" name="communion-aspect" />
-        </label>
-        <label
-          >Industry-nature
-          <input id="industry" type="number" name="industry" />
-          <input id="industry-aspect" type="text" name="industry-aspect" />
-        </label>
-        <label
-          >Mystery-nature
-          <input id="mystery" type="number" name="mystery" />
-          <input id="mystery-aspect" type="text" name="mystery-aspect" />
-        </label>
-        <label
-          >Self-nature
-          <input id="self" type="number" name="self" />
-          <input id="self-aspect" type="text" name="self-aspect" />
-        </label>
-        <label
-          >Trickery-nature
-          <input id="trickery" type="number" name="trickery" />
-          <input id="trickery-aspect" type="text" name="trickery-aspect" />
-        </label>
-        <label
-          >War-nature
-          <input id="war" type="number" name="war" />
-          <input id="war-aspect" type="text" name="war-aspect" />
-        </label>
+      <div id="nature-scores">
+        <div></div>
+        <div style="padding-left: 0.5em;">Score</div>
+        <div style="padding-left: 0.5em;">Aspect</div>
+        
+        <label for="communion">Communion-nature</label>
+        <input id="communion" type="number" name="communion" />
+        <input id="communion-aspect" type="text" name="communion-aspect" />
+
+        <label for="industry">Industry-nature</label>
+        <input id="industry" type="number" name="industry" />
+        <input id="industry-aspect" type="text" name="industry-aspect" />
+
+        <label for="mystery">Mystery-nature</label>
+        <input id="mystery" type="number" name="mystery" />
+        <input id="mystery-aspect" type="text" name="mystery-aspect" />
+
+        <label for="self">Self-nature</label>
+        <input id="self" type="number" name="self" />
+        <input id="self-aspect" type="text" name="self-aspect" />
+
+        <label for="trickery">Trickery-nature</label>
+        <input id="trickery" type="number" name="trickery" />
+        <input id="trickery-aspect" type="text" name="trickery-aspect" />
+
+        <label for="war">War-nature</label>
+        <input id="war" type="number" name="war" />
+        <input id="war-aspect" type="text" name="war-aspect" />
       </div>
 
       <h2>Expertise</h2>
@@ -165,7 +163,7 @@
 
       <p>Mystical Expertise</p>
 
-      <div class="mystical_expertise">
+      <div id="mystical_expertise">
         <label><input id="archetypal" type="checkbox" /> Archetypal</label>
         <label><input id="polymath" type="checkbox" /> Polymath</label>
         <label><input id="prodigy" type="checkbox" /> Prodigy</label>
@@ -174,7 +172,7 @@
 
       <h2>
         Optional Section
-        <button id="showoptional" class="hideshow">▼</button>
+        <button id="showoptional" class="hideshow" aria-expanded="false">▼</button>
       </h2>
       <div class="hidden optionalblock">
         <h3>Earthly Form</h3>
