@@ -1,12 +1,190 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>Sorcerously Advanced Character Generator</title>
     <script src="jquery-3.3.1.min.js"></script>
     <script src="chargen.js"></script>
     <link href="chargen.css" type="text/css" />
-</head>
-<body>
-</body>
+  </head>
+  <body>
+    <h1>Character Generator</h1>
+    <p class="subtitle">for Sorcerously Advanced</p>
+
+    <form>
+      <div id="charname">
+        <label>Name: <input id="name" type="text" name="name"/></label>
+      </div>
+
+      <h2>Civilization</h2>
+
+      <div class="civblock">
+        <select id="civselector">
+          <option id="cult" value="Cult">the Cult of the Empty Grave</option>
+          <option id="diadem" value="Diadem">Diadem</option>
+          <option id="geometers" value="Geometers Guild"
+            >the Geometer's Guild</option
+          >
+          <option id="glimmermere" value="Glimmermere">Glimmermere</option>
+          <option id="aegis" value="Golden Aegis">the Golden Aegis</option>
+          <option id="hearthkin" value="Hearthkin">the Hearth-kin</option>
+          <option id="nova" value="Nova">Nova Commonwealth</option>
+          <option id="sovereigns" value="Sovereigns"
+            >the Sovereigns of Hell</option
+          >
+          <option id="thoseabove" value="Those Above"
+            >Those Above the Sky</option
+          >
+          <option id="unroyal" value="Unroyal">the Unroyal</option>
+          <option id="worldbuilders" value="Worldbuilders"
+            >the Worldbuilders</option
+          >
+        </select>
+
+        <div id="civdata"></div>
+
+        <label
+          >Second civilization? <input type="checkbox" id="secondciv"
+        /></label>
+
+        <div id="civ2data"></div>
+      </div>
+
+      <h3>Society</h3>
+
+      <div id="societyblock">
+        <select id="society">
+          <option id="nosociety" value="None" selected>None</option>
+          <option id="archivist" value="Archivist">Archivist</option>
+          <option id="explorer" value="Explorer">the Explorer's Society</option>
+          <option id="fellowship" value="Fellowship"
+            >the Fellowship of Truth</option
+          >
+          <option id="fireandscale" value="FireAndScale">Fire and Scale</option>
+          <option id="gatecrasher" value="Gatecrasher">the Gatecrashers</option>
+          <option id="groundbreaker" value="Groundbreaker"
+            >the Groundbreakers</option
+          >
+          <option id="highsociety" value="HighSociety">High Society</option>
+          <option id="hospitaler" value="Hospitaler">the Hospitalers</option>
+          <option id="mindweavers" value="Mindweaver">the Mindweavers</option>
+          <option id="orgcrime" value="OrgCrime">Organized Crime</option>
+          <option id="peacewalker" value="Peacewalker">the Peacewalkers</option>
+          <option id="protean" value="Protean">the Protean</option>
+          <option id="soulpact" value="Soulpact">the Soulpact</option>
+          <option id="sunsinger" value="Sunsingers">the Sunsingers</option>
+          <option id="wargamer" value="Wargamer">the Wargamers</option>
+          <option id="windblown" value="Windblown">the Windblown</option>
+        </select>
+
+        <div id="societydata"></div>
+      </div>
+
+      <h2>Core Values</h2>
+
+      <div class="core-values">
+        <span class="cv-pair">
+          <input id="cv1" type="text" name="cv1" value="(from civilization)" />
+          <input id="cv1_val" aria-label="value" type="number" />
+        </span>
+        <span class="cv-pair">
+          <input id="cv2" type="text" name="cv2" value="(from civilization)" />
+          <input id="cv2_val" aria-label="value" type="number" />
+        </span>
+        <span class="cv-pair">
+          <input id="cv3" type="text" name="cv3" value="(free choice)" />
+          <input id="cv3_val" aria-label="value" type="number" />
+        </span>
+        <span class="cv-pair">
+          <input id="cv4" type="text" name="cv4" value="(can leave blank)" />
+          <input id="cv4_val" aria-label="value" type="number" />
+        </span>
+        <span class="cv-pair">
+          <input id="cv5" type="text" name="cv5" value="Self-Preservation" />
+          <input id="cv5_val" aria-label="value" type="number" />
+        </span>
+      </div>
+
+      <h2>Traditions</h2>
+
+      <div id="tradpicker"></div>
+
+      <label
+        >Add another tradition? <input type="checkbox" id="addtrad1"
+      /></label>
+
+      <div id="civ2data"></div>
+
+      <h2>Natures</h2>
+
+      <div class="nature_scores">
+        <label
+          >Communion-nature
+          <input id="communion" type="number" name="communion" />
+          <input id="communion-aspect" type="text" name="communion-aspect" />
+        </label>
+        <label
+          >Industry-nature
+          <input id="industry" type="number" name="industry" />
+          <input id="industry-aspect" type="text" name="industry-aspect" />
+        </label>
+        <label
+          >Mystery-nature
+          <input id="mystery" type="number" name="mystery" />
+          <input id="mystery-aspect" type="text" name="mystery-aspect" />
+        </label>
+        <label
+          >Self-nature
+          <input id="self" type="number" name="self" />
+          <input id="self-aspect" type="text" name="self-aspect" />
+        </label>
+        <label
+          >Trickery-nature
+          <input id="trickery" type="number" name="trickery" />
+          <input id="trickery-aspect" type="text" name="trickery-aspect" />
+        </label>
+        <label
+          >War-nature
+          <input id="war" type="number" name="war" />
+          <input id="war-aspect" type="text" name="war-aspect" />
+        </label>
+      </div>
+
+      <h2>Expertise</h2>
+
+      <label
+        >Baseline Expertise
+        <select id="baseline-expertise">
+          <option id="apprentice" value="Apprentice">Apprentice</option>
+          <option id="practitioner" value="Practitioner" selected
+            >Practitioner</option
+          >
+          <option id="sage" value="Sage">Sage</option>
+        </select>
+      </label>
+
+      <p>Mystical Expertise</p>
+
+      <div class="mystical_expertise">
+        <label><input id="archetypal" type="checkbox" /> Archetypal</label>
+        <label><input id="polymath" type="checkbox" /> Polymath</label>
+        <label><input id="prodigy" type="checkbox" /> Prodigy</label>
+        <label><input id="satori" type="checkbox" /> Satori</label>
+      </div>
+
+      <h2>
+        Optional Section
+        <button id="showoptional" class="hideshow">▼</button>
+      </h2>
+      <div class="hidden optionalblock">
+        <h3>Earthly Form</h3>
+
+        <h3>Supernatural Tradition</h3>
+      </div>
+      <h2>Calculated Scores</h2>
+
+      <p>Import: <span id="import"></span></p>
+      <p>Power: <span id="power"></span></p>
+    </form>
+  </body>
 </html>
