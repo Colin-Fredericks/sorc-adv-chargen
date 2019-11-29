@@ -20,7 +20,9 @@
 
       <div class="civblock">
         <select id="civselector">
-          <option id="nociv" value="nociv" selected>-- Select a civilization --</option>
+          <option id="nociv" value="nociv" selected
+            >-- Select a civilization --</option
+          >
           <option id="cult" value="Cult">the Cult of the Empty Grave</option>
           <option id="diadem" value="Diadem">Diadem</option>
           <option id="geometers" value="Geometers Guild"
@@ -82,9 +84,7 @@
 
         <div id="societydata"></div>
 
-        <label
-          >Second society? <input type="checkbox" id="secondciv"
-        /></label>
+        <label>Second society? <input type="checkbox" id="secondciv"/></label>
 
         <div id="society2data"></div>
       </div>
@@ -125,18 +125,16 @@
       <div id="civ2data"></div>
 
       <h2>Natures</h2>
-      
+
       <div id="allnatures">
-
-      <div id="trad1">
-
+        <div id="trad1">
           <div id="trad1name"></div>
 
           <div class="nature-scores">
             <div></div>
             <div style="padding-left: 0.5em;">Score</div>
             <div style="padding-left: 0.5em;">Aspect</div>
-        
+
             <label for="communion">Communion-nature</label>
             <input id="communion" type="number" name="communion" />
             <input id="communion-aspect" type="text" name="communion-aspect" />
@@ -161,10 +159,8 @@
             <input id="war" type="number" name="war" />
             <input id="war-aspect" type="text" name="war-aspect" />
           </div>
+        </div>
       </div>
-      
-      </div>
-      
 
       <h2>Expertise</h2>
 
@@ -190,7 +186,9 @@
 
       <h2>
         Optional Section
-        <button id="showoptional" class="hideshow" aria-expanded="false">▼</button>
+        <button id="showoptional" class="hideshow" aria-expanded="false">
+          ▼
+        </button>
       </h2>
       <div class="hidden optionalblock">
         <h3>Earthly Form</h3>

@@ -1,23 +1,23 @@
 .nature-scores {
-    display: grid;
-    grid-template-columns: auto 1fr 4fr;
-    max-width: 600px;
+  display: grid;
+  grid-template-columns: auto 1fr 4fr;
+  max-width: 600px;
 }
 
 .nature-scores label {
-    padding-right: 1em;
+  padding-right: 1em;
 }
 
 #core-values {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
-#mystical_expertise{
-    display: grid;
-    grid-template-columns: 1fr;    
+#mystical_expertise {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
-.hidden{
-    display:none;
+.hidden {
+  display: none;
 }
