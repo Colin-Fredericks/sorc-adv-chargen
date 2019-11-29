@@ -1,77 +1,287 @@
 const civs = {
   cult: {
     name: 'the Cult of the Empty Grave',
+    cvs: [''],
     traditions: ['practice', 'rage'],
     benefit: ''
   },
   diadem: {
     name: 'Diadem',
+    cvs: [''],
     traditions: ['transubstantiation', 'drudgery'],
     benefit: ''
   },
-  guild: {
+  geometers: {
     name: "The Geometer's Guild",
+    cvs: [''],
     traditions: ['sacredgeom'],
     benefit: ''
   },
   glimmermere: {
     name: 'Glimmermere',
+    cvs: [''],
     traditions: ['highertalent', 'madpower'],
     benefit: ''
   },
   aegis: {
     name: 'The Golden Ægis',
+    cvs: [''],
     traditions: ['calling', 'auraofheaven'],
     benefit: ''
   },
   hearthkin: {
     name: 'The Hearth-Kin',
+    cvs: [''],
     traditions: ['whatbindsus', 'whatdefinesus'],
     benefit: ''
   },
   nova: {
     name: 'Nova Commonwealth',
+    cvs: [''],
     traditions: ['buildyourown'],
     benefit: ''
   },
   sovereigns: {
     name: 'The Sovereigns of Hell',
+    cvs: [''],
     traditions: ['devilpower', 'sagepath', 'silentpath'],
     benefit: ''
   },
   thoseabove: {
     name: 'Those Above the Sky',
+    cvs: [''],
     traditions: ['starlitway', 'homebuilders'],
     benefit: ''
   },
   unroyal: {
     name: 'The Unroyal',
+    cvs: [''],
     traditions: ['keyoffreedom', 'keyofcourage'],
     benefit: ''
   },
   worldbuilders: {
     name: 'The Worldbuilders',
+    cvs: [''],
     traditions: ['parelthonia', 'symmachis'],
     benefit: ''
   },
   unruly: {
     name: 'An Unruly Land',
+    cvs: [''],
     traditions: ['buildyourown'],
     benefit: ''
   },
   returner: {
     name: 'Returner Cult',
+    cvs: [''],
     traditions: ['none'],
     benefit: ''
   }
 };
 
+const societies = {
+  nosociety: { name: 'None', cvs: [''], traditions: [], benefit: '' },
+  archivist: {
+    name: 'Archivist',
+    cvs: ['Knowledge for the sake of...'],
+    traditions: [],
+    benefit: ''
+  },
+  explorer: {
+    name: "the Explorer's Society",
+    cvs: ['Exploration'],
+    traditions: [],
+    benefit: ''
+  },
+  fellowship: {
+    name: 'the Fellowship of Truth',
+    cvs: ['The Old Ways'],
+    traditions: ['truewiz'],
+    benefit: ''
+  },
+  fireandscale: {
+    name: 'Fire and Scale',
+    cvs: ['Hedonism'],
+    traditions: ['languid'],
+    benefit: ''
+  },
+  gatecrasher: {
+    name: 'the Gatecrashers',
+    cvs: ['Stay Bought'],
+    traditions: ['pathfinding'],
+    benefit: ''
+  },
+  groundbreaker: {
+    name: 'the Groundbreakers',
+    cvs: ['Go for the Gold'],
+    traditions: [],
+    benefit: ''
+  },
+  highsociety: {
+    name: 'High Society',
+    cvs: ['Good Breeding'],
+    traditions: [],
+    benefit: ''
+  },
+  hospitaler: {
+    name: 'the Hospitalers',
+    cvs: ['Charity'],
+    traditions: [],
+    benefit: ''
+  },
+  mindweavers: {
+    name: 'the Mindweavers',
+    cvs: ['Create Your Own Salvation'],
+    traditions: ['analysis'],
+    benefit: ''
+  },
+  orgcrime: {
+    name: 'Organized Crime',
+    cvs: ['the Wall of Silence'],
+    traditions: [],
+    benefit: ''
+  },
+  peacewalker: {
+    name: 'the Peacewalkers',
+    cvs: ['Non-Violence'],
+    traditions: [],
+    benefit: ''
+  },
+  protean: {
+    name: 'the Protean',
+    cvs: ['Freedom of Form'],
+    traditions: [],
+    benefit: ''
+  },
+  soulpact: {
+    name: 'the Soulpact',
+    cvs: ['Redemption'],
+    traditions: [],
+    benefit: ''
+  },
+  sunsinger: {
+    name: 'the Sunsingers',
+    cvs: ['The Middle Path'],
+    traditions: ['callingsun'],
+    benefit: ''
+  },
+  wargamer: {
+    name: 'the Wargamers',
+    cvs: ['See it Through'],
+    traditions: [],
+    benefit: ''
+  },
+  windblown: {
+    name: 'the Windblown',
+    cvs: ['Tell Your Story'],
+    traditions: ['oldway'],
+    benefit: ''
+  }
+};
+
 const trads = {
+  nomag: {
+    name: 'No magical tradition',
+    expressions: [],
+    paths: [],
+    founts: []
+  },
   buildyourown: {
     name: 'Build-your-own Tradition',
     expressions: [],
     paths: [],
     founts: []
+  },
+  diamond: {
+    name: 'the Diamond of the Soul',
+    expressions: [
+      'Cloning',
+      'Guising',
+      'Hypnopraxis',
+      'Precognition',
+      'Psychometry',
+      'the Uncountable Spinners'
+    ],
+    paths: ['discipline (body)'],
+    founts: ['necromancy']
+  },
+  languid: {
+    name: 'the Languid Art',
+    expressions: [
+      'The Burning Dream',
+      'Hallucination',
+      'Shapeshifting',
+      'the Shell Game',
+      'Telekinesis'
+    ],
+    paths: ['belief'],
+    founts: ['elementalism']
+  },
+  pathfinding: {
+    name: 'Pathfinding',
+    expressions: [
+      'Curses',
+      'Lagged Curses',
+      'Multitasking',
+      'Nightmare Exile',
+      'Null Tolerance (required)',
+      'Precognition'
+    ],
+    paths: ['geometry'],
+    founts: ['glory']
+  },
+  analysis: {
+    name: 'Analysis',
+    expressions: [
+      'Curses',
+      'Lagged Curses',
+      'Mnemosurgery',
+      'Mystic Servitors (required)',
+      'Personae',
+      'the Shell Game',
+      'the Uncountable Spinners'
+    ],
+    paths: ['geometry'],
+    founts: ['oneiromancy']
+  },
+  callingsun: {
+    name: 'Calling the Sun',
+    expressions: [
+      'Deconjuration',
+      'Dreamshaping',
+      'Hallucination',
+      'Multitasking',
+      'Nightmare Exile',
+      'Soul-work'
+    ],
+    paths: ['artistry'],
+    founts: ['glory']
+  },
+  oldway: {
+    name: 'The Old Way',
+    expressions: [
+      'Cloning',
+      'Expanded Expertise (Satori)',
+      'Guising',
+      'Nature-work',
+      'Tailored Canon',
+      'Transmutation'
+    ],
+    paths: ['reagents'],
+    founts: ['earthpower']
+  },
+  truewiz: {
+    name: 'True Wizardry',
+    expressions: [
+      'Curses',
+      'Expanded Expertise (Prodigy)',
+      'the Red Space',
+      'Shapeshifting',
+      'Travel',
+      'Universal Repositories'
+    ],
+    paths: ['language'],
+    founts: ['alchemy']
   },
   practice: {
     name: 'The Practice',
@@ -173,7 +383,7 @@ const trads = {
     founts: ['glory']
   },
   calling: {
-    name: 'The Calling of Heaven',
+    name: 'The Calling',
     expressions: [
       'Conjuration',
       'Healing',
@@ -346,17 +556,24 @@ const trads = {
 const natures = ['Communion', 'Industry', 'Mystery', 'Self', 'Trickery', 'War'];
 
 $(document).ready(function() {
+  let charstats = {
+    civ: [],
+    society: [],
+    traditions: []
+  };
+
   // Tradition and Nature HTML definition
   // n is for the nth block, the title is the tradition's keyname
-  function tradblock(n, title) {
+  function tradBlock(n, title) {
     // container div
     let d = $('<div>');
     d.attr('id', 'trad' + n);
 
     // title
     let t = $('<div>');
-    d.attr = ('id', 'trad' + n + 'name');
-    d.text = trads[title];
+    t.attr({ id: 'trad' + n + 'name' });
+    t.text(trads[title].name);
+    t.addClass('tradition-title');
     d.append(t);
 
     // nature block
@@ -369,17 +586,21 @@ $(document).ready(function() {
 
     // rows for individual natures
     natures.forEach(function(e) {
-      el = e.toLowerCase();
+      elow = e.toLowerCase();
 
       let label = $('<label>');
-      label.attr('for', el);
+      label.attr('for', elow);
       label.text(e + '-nature');
 
       let natureval = $('<input>');
-      natureval.attr({ id: el, type: 'number', name: el });
+      natureval.attr({ id: elow, type: 'number', name: elow });
 
       let aspect = $('<input>');
-      aspect.attr({ id: el + '-aspect', type: 'text', name: el + '-aspect' });
+      aspect.attr({
+        id: elow + '-aspect',
+        type: 'text',
+        name: elow + '-aspect'
+      });
 
       nb.append(label);
       nb.append(natureval);
@@ -391,11 +612,73 @@ $(document).ready(function() {
     return d;
   }
 
+  function addNatureBlock(t) {
+    console.log(t);
+    let n = $('.nature-scores').length;
+    $('#allnatures').append(tradBlock(n, t));
+  }
+
+  // Add a checkbox for each tradition you have available.
+  function addTradSelector(t) {
+    let tp = $('#tradpicker');
+
+    let sel = $('<div>');
+    sel.addClass('tradition-selector');
+
+    let cb = $('<input>');
+    cb.attr({ type: 'checkbox', id: 'trad' + t, value: t });
+
+    let label = $('<label>');
+    label.attr({ for: 'trad' + t });
+    label.text(trads[t].name);
+
+    sel.append(cb);
+    sel.append(label);
+
+    tp.append(sel);
+
+    cb.on('click tap', function(e) {
+      addNatureBlock(e.target.value);
+    });
+  }
+
+  // Civilization selector
+  $('#civselector').on('input', function(e) {
+    charstats.civ[0] = e.target.value;
+    // Update character sheet and civ checkbox
+    civs[e.target.value].traditions.forEach(function(t) {
+      console.log(t);
+      charstats.traditions.push(t);
+      addTradSelector(t);
+    });
+  });
+
+  // Society selector
+  $('#society').on('input', function(e) {
+    charstats.society[0] = e.target.value;
+    // Update character sheet and civ checkbox
+    societies[e.target.value].traditions.forEach(function(t) {
+      charstats.traditions.push(t);
+      addTradSelector(t);
+    });
+  });
+
   // Second Civilization toggle
 
   // Second Society toggle
 
   // Fill values based on Civ and Society.
+
+  // Add build-your-own traditions
+  $('#addtrad').on('click tap', function(e) {
+    e.preventDefault();
+    console.log('adding tradition');
+  });
+
+  // If you have no magical tradition...
+  $('#nomag').on('input', function(e) {
+    addTradSelector('nomag');
+  });
 
   // Toggle optional elements
   $('#showoptional').on('click tap', function(e) {

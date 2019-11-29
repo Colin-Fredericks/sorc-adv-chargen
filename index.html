@@ -23,27 +23,25 @@
           <option id="nociv" value="nociv" selected
             >-- Select a civilization --</option
           >
-          <option id="cult" value="Cult">the Cult of the Empty Grave</option>
-          <option id="diadem" value="Diadem">Diadem</option>
-          <option id="geometers" value="Geometers Guild"
-            >the Geometer's Guild</option
-          >
-          <option id="glimmermere" value="Glimmermere">Glimmermere</option>
-          <option id="aegis" value="Golden Aegis">the Golden Aegis</option>
-          <option id="hearthkin" value="Hearthkin">the Hearth-kin</option>
-          <option id="nova" value="Nova">Nova Commonwealth</option>
-          <option id="sovereigns" value="Sovereigns"
+          <option id="cult" value="cult">the Cult of the Empty Grave</option>
+          <option id="diadem" value="diadem">Diadem</option>
+          <option id="geometers" value="geometers">the Geometer's Guild</option>
+          <option id="glimmermere" value="glimmermere">Glimmermere</option>
+          <option id="aegis" value="aegis">the Golden Aegis</option>
+          <option id="hearthkin" value="hearthkin">the Hearth-kin</option>
+          <option id="nova" value="nova">Nova Commonwealth</option>
+          <option id="sovereigns" value="sovereigns"
             >the Sovereigns of Hell</option
           >
-          <option id="thoseabove" value="Those Above"
+          <option id="thoseabove" value="thoseabove"
             >Those Above the Sky</option
           >
-          <option id="unroyal" value="Unroyal">the Unroyal</option>
-          <option id="worldbuilders" value="Worldbuilders"
+          <option id="unroyal" value="unroyal">the Unroyal</option>
+          <option id="worldbuilders" value="worldbuilders"
             >the Worldbuilders</option
           >
-          <option id="unruly" value="Unruly">the Unruly Lands</option>
-          <option id="returner" value="Returner">Returner Cult</option>
+          <option id="unruly" value="unruly">the Unruly Lands</option>
+          <option id="returner" value="returner">Returner Cult</option>
         </select>
 
         <div id="civdata"></div>
@@ -59,27 +57,27 @@
 
       <div id="societyblock">
         <select id="society">
-          <option id="nosociety" value="None" selected>None</option>
-          <option id="archivist" value="Archivist">Archivist</option>
-          <option id="explorer" value="Explorer">the Explorer's Society</option>
-          <option id="fellowship" value="Fellowship"
+          <option id="nosociety" value="none" selected>None</option>
+          <option id="archivist" value="archivist">Archivist</option>
+          <option id="explorer" value="explorer">the Explorer's Society</option>
+          <option id="fellowship" value="fellowship"
             >the Fellowship of Truth</option
           >
-          <option id="fireandscale" value="FireAndScale">Fire and Scale</option>
-          <option id="gatecrasher" value="Gatecrasher">the Gatecrashers</option>
-          <option id="groundbreaker" value="Groundbreaker"
+          <option id="fireandscale" value="fireandscale">Fire and Scale</option>
+          <option id="gatecrasher" value="gatecrasher">the Gatecrashers</option>
+          <option id="groundbreaker" value="groundbreaker"
             >the Groundbreakers</option
           >
-          <option id="highsociety" value="HighSociety">High Society</option>
-          <option id="hospitaler" value="Hospitaler">the Hospitalers</option>
-          <option id="mindweavers" value="Mindweaver">the Mindweavers</option>
-          <option id="orgcrime" value="OrgCrime">Organized Crime</option>
-          <option id="peacewalker" value="Peacewalker">the Peacewalkers</option>
-          <option id="protean" value="Protean">the Protean</option>
-          <option id="soulpact" value="Soulpact">the Soulpact</option>
-          <option id="sunsinger" value="Sunsingers">the Sunsingers</option>
-          <option id="wargamer" value="Wargamer">the Wargamers</option>
-          <option id="windblown" value="Windblown">the Windblown</option>
+          <option id="highsociety" value="highsociety">High Society</option>
+          <option id="hospitaler" value="hospitaler">the Hospitalers</option>
+          <option id="mindweavers" value="mindweaver">the Mindweavers</option>
+          <option id="orgcrime" value="orgcrime">Organized Crime</option>
+          <option id="peacewalker" value="peacewalker">the Peacewalkers</option>
+          <option id="protean" value="protean">the Protean</option>
+          <option id="soulpact" value="soulpact">the Soulpact</option>
+          <option id="sunsinger" value="sunsingers">the Sunsingers</option>
+          <option id="wargamer" value="wargamer">the Wargamers</option>
+          <option id="windblown" value="windblown">the Windblown</option>
         </select>
 
         <div id="societydata"></div>
@@ -118,49 +116,20 @@
 
       <div id="tradpicker"></div>
 
-      <label
-        >Add another tradition? <input type="checkbox" id="addtrad1"
-      /></label>
+      <p>
+        <label for="nomag">
+          <input id="nomag" type="checkbox" value="nomag" />
+          No magical tradition
+        </label>
+        <br />
+        <button id="addtrad">Add build-your-own tradition?</button>
+      </p>
 
       <div id="civ2data"></div>
 
       <h2>Natures</h2>
 
-      <div id="allnatures">
-        <div id="trad1">
-          <div id="trad1name"></div>
-
-          <div class="nature-scores">
-            <div></div>
-            <div style="padding-left: 0.5em;">Score</div>
-            <div style="padding-left: 0.5em;">Aspect</div>
-
-            <label for="communion">Communion-nature</label>
-            <input id="communion" type="number" name="communion" />
-            <input id="communion-aspect" type="text" name="communion-aspect" />
-
-            <label for="industry">Industry-nature</label>
-            <input id="industry" type="number" name="industry" />
-            <input id="industry-aspect" type="text" name="industry-aspect" />
-
-            <label for="mystery">Mystery-nature</label>
-            <input id="mystery" type="number" name="mystery" />
-            <input id="mystery-aspect" type="text" name="mystery-aspect" />
-
-            <label for="self">Self-nature</label>
-            <input id="self" type="number" name="self" />
-            <input id="self-aspect" type="text" name="self-aspect" />
-
-            <label for="trickery">Trickery-nature</label>
-            <input id="trickery" type="number" name="trickery" />
-            <input id="trickery-aspect" type="text" name="trickery-aspect" />
-
-            <label for="war">War-nature</label>
-            <input id="war" type="number" name="war" />
-            <input id="war-aspect" type="text" name="war-aspect" />
-          </div>
-        </div>
-      </div>
+      <div id="allnatures"></div>
 
       <h2>Expertise</h2>
 
