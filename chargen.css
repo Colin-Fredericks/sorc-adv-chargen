@@ -1,10 +1,10 @@
-#nature-scores {
+.nature-scores {
     display: grid;
     grid-template-columns: auto 1fr 4fr;
     max-width: 600px;
 }
 
-#nature-scores label {
+.nature-scores label {
     padding-right: 1em;
 }
 

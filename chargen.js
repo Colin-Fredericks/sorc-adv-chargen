@@ -75,13 +75,13 @@ const trads = {
     },
     practice: {
         name: 'The Practice',
-        expressions: [ 'Cloning', 'Curses', 'Expanded Expertise (Archetypal or Polymath)', 'Hypnopraxis', 'Multitasking', 'Null Tolerance', 'Psychometry', 'Soul-work', 'the Uncountable Spinners' ]
+        expressions: [ 'Cloning', 'Curses', 'Expanded Expertise (Archetypal or Polymath)', 'Hypnopraxis', 'Multitasking', 'Null Tolerance', 'Psychometry', 'Soul-work', 'the Uncountable Spinners' ],
         paths: ['language'],
         founts: ['necromancy'],
     },
     rage: {
         name: 'The Rage',
-        expressions: [ 'the Burning Dream', 'Curses', 'Deconjuration', 'Hallucination', 'Nightmare Exile', 'the Ten Crore Stones', 'Weather-work' ]
+        expressions: [ 'the Burning Dream', 'Curses', 'Deconjuration', 'Hallucination', 'Nightmare Exile', 'the Ten Crore Stones', 'Weather-work' ],
         paths: ['belief'],
         founts: ['necromancy'],
     },
@@ -195,8 +195,62 @@ const trads = {
     },
 };
 
+const natures = ['Communion', 'Industry', 'Mystery', 'Self', 'Trickery', 'War'];
+
+
 $(document).ready(function(){
 
+    // Tradition and Nature HTML definition
+    // n is for the nth block, the title is the tradition's keyname
+    function tradblock(n, title){
+        // container div
+        let d = $('<div>');
+        d.attr('id', 'trad' + n);
+        
+        // title
+        let t = $('<div>');
+        d.attr = ('id', 'trad' + n + 'name');
+        d.text = trads[title];
+        d.append(t);
+        
+        // nature block
+        let nb = $('<div>');
+        nb.addClass('nature-scores');
+        nb.append('<div></div>');
+        nb.append('<div style="padding-left: 0.5em;">Score</div>');
+        nb.append('<div style="padding-left: 0.5em;">Aspect</div>');
+        
+        natures.forEach(function(e){
+            el = e.toLowerCase();
+            
+            let label = $('<label>');
+            label.attr('for',el);
+            label.text(e + '-nature');
+            
+            let natureval = $('<input>');
+            natureval.attr({'id': el, type: 'number', 'name': el});
+            
+            let aspect = $('<input>');
+            aspect.attr({'id': el + '-aspect', type: 'text', 'name': el + '-aspect'});
+
+            nb.append(label);
+            nb.append(natureval);
+            nb.append(aspect);
+        });
+        
+        d.append(nb);
+        
+        return d;
+    }
+
+    // Second Civilization toggle
+    
+    // Second Society toggle
+
+    // Fill values based on Civ and Society.
+    
+
+    // Toggle optional elements
     $('#showoptional').on('click tap', function(e){
         e.preventDefault();
         $('.optionalblock').slideToggle('fast');
@@ -206,5 +260,7 @@ $(document).ready(function(){
         $('#showoptional').attr('aria-expanded', newstate);
         $('#showoptional').text(newtext);
     });
+    
+    // Calculate Import and Power
 
 });
