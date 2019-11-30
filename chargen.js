@@ -576,7 +576,6 @@ $(document).ready(function() {
       tradlist.push(e.value);
     });
     charstats.traditions = tradlist;
-    console.log(tradlist);
     updateNatureBlock(tradlist);
     updateTradBlock(tradlist);
   }
@@ -618,6 +617,9 @@ $(document).ready(function() {
     let d = $('<div>');
     d.attr('id', 'trad' + n);
 
+    // grid spacers
+    let s = $('<div>');
+
     // title
     let t = $('<div>');
     t.attr({ id: 'trad' + n + 'name' });
@@ -642,14 +644,15 @@ $(document).ready(function() {
       label.text(e + '-nature');
 
       let natureval = $('<input>');
-      natureval.attr({ id: elow, type: 'number', name: elow, value: 1 });
+      natureval.attr({ type: 'number', name: elow, value: 1 });
+      natureval.addClass(elow);
 
       let aspect = $('<input>');
       aspect.attr({
-        id: elow + '-aspect',
         type: 'text',
         name: elow + '-aspect'
       });
+      aspect.addClass(elow + '-aspect');
 
       nb.append(label);
       nb.append(natureval);
@@ -661,10 +664,18 @@ $(document).ready(function() {
     return d;
   }
 
+  // Add a block of stats for a given Tradition
   function addNatureBlock(t) {
     console.log(t);
     let n = $('.nature-scores').length;
     $('#allnatures').append(tradBlock(n, t));
+
+    // Synchronize Aspects across Traditions
+    $('[class$=aspect]')
+      .off('input.aspect')
+      .on('input.aspect', function(e) {
+        $('.' + e.target.name).val(e.target.value);
+      });
   }
 
   function updateNatureBlock(tradlist) {
