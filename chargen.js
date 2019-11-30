@@ -1,4 +1,10 @@
 const civs = {
+  nociv: {
+    name: '-- Select a civilization --',
+    cvs: [''],
+    traditions: [],
+    benefit: ''
+  },
   cult: {
     name: 'the Cult of the Empty Grave',
     cvs: [''],
@@ -200,6 +206,7 @@ const trads = {
       'Hypnopraxis',
       'Precognition',
       'Psychometry',
+      'Soul-work',
       'the Uncountable Spinners'
     ],
     paths: ['discipline (body)'],
@@ -557,10 +564,38 @@ const natures = ['Communion', 'Industry', 'Mystery', 'Self', 'Trickery', 'War'];
 
 $(document).ready(function() {
   let charstats = {
+    name: '',
     civ: [],
     society: [],
     traditions: []
   };
+
+  //
+  function updateTraditions() {
+    let tradlist = [];
+    $('#tradpicker input:checked').each(function(i, e) {
+      tradlist.push(e.value);
+    });
+    charstats.traditions = tradlist;
+    updateNatureBlock(tradlist);
+    updateTradBlock(tradlist);
+  }
+
+  function updateTradBlock() {}
+
+  function makeCivSelector(n) {
+    let sel = $('<select>');
+    sel.attr({ id: 'civ' + n });
+
+    $.each(civs, function(k) {
+      let opt = $('<option>');
+      opt.attr({ id: k, value: k });
+      opt.text(civs[k].name);
+      sel.append(opt);
+    });
+
+    $('#civ' + n + 'select').append(sel);
+  }
 
   // Tradition and Nature HTML definition
   // n is for the nth block, the title is the tradition's keyname
@@ -593,7 +628,7 @@ $(document).ready(function() {
       label.text(e + '-nature');
 
       let natureval = $('<input>');
-      natureval.attr({ id: elow, type: 'number', name: elow });
+      natureval.attr({ id: elow, type: 'number', name: elow, value: 1 });
 
       let aspect = $('<input>');
       aspect.attr({
@@ -618,6 +653,20 @@ $(document).ready(function() {
     $('#allnatures').append(tradBlock(n, t));
   }
 
+  function updateNatureBlock(tradlist) {
+    $('#allnatures').empty();
+    tradlist.forEach(function(t) {
+      addNatureBlock(t);
+    });
+  }
+
+  function updateTradSelector(tradoptions) {
+    $('.tradition-selector').empty();
+    tradoptions.forEach(function(t) {
+      addTradSelector(t);
+    });
+  }
+
   // Add a checkbox for each tradition you have available.
   function addTradSelector(t) {
     let tp = $('#tradpicker');
@@ -638,19 +687,37 @@ $(document).ready(function() {
     tp.append(sel);
 
     cb.on('click tap', function(e) {
-      addNatureBlock(e.target.value);
+      updateTraditions();
     });
   }
 
+  makeCivSelector(1);
+  makeCivSelector(2);
+  $('#civ2').hide();
+  // Second Civilization toggle
+  $('#secondciv').on('input', function() {
+    $('#civ2').toggle();
+  });
+
   // Civilization selector
-  $('#civselector').on('input', function(e) {
-    charstats.civ[0] = e.target.value;
-    // Update character sheet and civ checkbox
-    civs[e.target.value].traditions.forEach(function(t) {
-      console.log(t);
-      charstats.traditions.push(t);
-      addTradSelector(t);
+  $('#civ1, #civ2').on('input', function(e) {
+    // Set character civilization(s)
+    let charcivs = [];
+    let tradoptions = [];
+    $('#civblock select').each(function(i, e) {
+      // console.log($(e).val());
+      charcivs.push($(e).val());
     });
+    charstats.civ = charcivs;
+
+    // Update tradition options
+    charcivs.forEach(function(c) {
+      civs[c].traditions.forEach(function(t) {
+        console.log(t);
+        tradoptions.push(t);
+      });
+    });
+    updateTradSelector(tradoptions);
   });
 
   // Society selector
@@ -663,9 +730,10 @@ $(document).ready(function() {
     });
   });
 
-  // Second Civilization toggle
-
   // Second Society toggle
+  $('#secondciv').on('input', function() {
+    $('#society2').toggle();
+  });
 
   // Fill values based on Civ and Society.
 

@@ -18,45 +18,21 @@
 
       <h2>Civilization</h2>
 
-      <div class="civblock">
-        <select id="civselector">
-          <option id="nociv" value="nociv" selected
-            >-- Select a civilization --</option
-          >
-          <option id="cult" value="cult">the Cult of the Empty Grave</option>
-          <option id="diadem" value="diadem">Diadem</option>
-          <option id="geometers" value="geometers">the Geometer's Guild</option>
-          <option id="glimmermere" value="glimmermere">Glimmermere</option>
-          <option id="aegis" value="aegis">the Golden Aegis</option>
-          <option id="hearthkin" value="hearthkin">the Hearth-kin</option>
-          <option id="nova" value="nova">Nova Commonwealth</option>
-          <option id="sovereigns" value="sovereigns"
-            >the Sovereigns of Hell</option
-          >
-          <option id="thoseabove" value="thoseabove"
-            >Those Above the Sky</option
-          >
-          <option id="unroyal" value="unroyal">the Unroyal</option>
-          <option id="worldbuilders" value="worldbuilders"
-            >the Worldbuilders</option
-          >
-          <option id="unruly" value="unruly">the Unruly Lands</option>
-          <option id="returner" value="returner">Returner Cult</option>
-        </select>
-
+      <div id="civblock">
+        <div id="civ1select"></div>
         <div id="civdata"></div>
 
         <label
           >Second civilization? <input type="checkbox" id="secondciv"
         /></label>
-
+        <div id="civ2select"></div>
         <div id="civ2data"></div>
       </div>
 
       <h3>Society</h3>
 
       <div id="societyblock">
-        <select id="society">
+        <select class="society-selector">
           <option id="nosociety" value="none" selected>None</option>
           <option id="archivist" value="archivist">Archivist</option>
           <option id="explorer" value="explorer">the Explorer's Society</option>
