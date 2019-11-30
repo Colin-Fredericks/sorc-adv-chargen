@@ -576,6 +576,7 @@ $(document).ready(function() {
       tradlist.push(e.value);
     });
     charstats.traditions = tradlist;
+    console.log(tradlist);
     updateNatureBlock(tradlist);
     updateTradBlock(tradlist);
   }
@@ -680,6 +681,7 @@ $(document).ready(function() {
     tradoptions.forEach(function(t) {
       addTradSelector(t, culture);
     });
+    updateTraditions();
   }
 
   // Add a checkbox for a particular tradition.
@@ -783,9 +785,9 @@ $(document).ready(function() {
   // If you have no magical tradition...
   $('#nomag').on('input', function(e) {
     if (e.target.checked) {
-      updateTradSelector(['nomag'], 'nomag', false);
+      updateTradSelector(['nomag'], 'nomag');
     } else {
-      updateTradSelector([], 'nomag', false);
+      updateTradSelector([], 'nomag');
     }
   });
 
