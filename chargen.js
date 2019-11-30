@@ -570,7 +570,6 @@ $(document).ready(function() {
     traditions: []
   };
 
-  //
   function updateTraditions() {
     let tradlist = [];
     $('#tradpicker input:checked').each(function(i, e) {
@@ -597,7 +596,21 @@ $(document).ready(function() {
     $('#civ' + n + 'select').append(sel);
   }
 
-  // Tradition and Nature HTML definition
+  function makeSocietySelector(n) {
+    let sel = $('<select>');
+    sel.attr({ id: 'society' + n });
+
+    $.each(societies, function(k) {
+      let opt = $('<option>');
+      opt.attr({ id: k, value: k });
+      opt.text(societies[k].name);
+      sel.append(opt);
+    });
+
+    $('#society' + n + 'select').append(sel);
+  }
+
+  // Returns HTML for Tradition and Nature
   // n is for the nth block, the title is the tradition's keyname
   function tradBlock(n, title) {
     // container div
@@ -660,31 +673,41 @@ $(document).ready(function() {
     });
   }
 
-  function updateTradSelector(tradoptions) {
-    $('.tradition-selector').empty();
+  // Update the checkboxes we use to select traditions.
+  function updateTradSelector(tradoptions, culture) {
+    // Remove exising traditions of this type, then add new ones.
+    $('.tradition-selector.' + culture).remove();
     tradoptions.forEach(function(t) {
-      addTradSelector(t);
+      addTradSelector(t, culture);
     });
   }
 
-  // Add a checkbox for each tradition you have available.
-  function addTradSelector(t) {
+  // Add a checkbox for a particular tradition.
+  function addTradSelector(t, culture) {
     let tp = $('#tradpicker');
 
     let sel = $('<div>');
     sel.addClass('tradition-selector');
-
-    let cb = $('<input>');
-    cb.attr({ type: 'checkbox', id: 'trad' + t, value: t });
+    sel.addClass(culture);
 
     let label = $('<label>');
     label.attr({ for: 'trad' + t });
     label.text(trads[t].name);
 
-    sel.append(cb);
+    let cb = $('<input>');
+    cb.attr({ type: 'checkbox', id: 'trad' + t, value: t });
+
+    label.prepend(cb);
     sel.append(label);
 
     tp.append(sel);
+
+    if (culture === 'nomag') {
+      // Just activating and hiding the checkbox.
+      $('#trad' + culture).click();
+      $('.' + culture).hide();
+      updateTraditions();
+    }
 
     cb.on('click tap', function(e) {
       updateTraditions();
@@ -694,9 +717,19 @@ $(document).ready(function() {
   makeCivSelector(1);
   makeCivSelector(2);
   $('#civ2').hide();
+
+  makeSocietySelector(1);
+  makeSocietySelector(2);
+  $('#society2').hide();
+
   // Second Civilization toggle
   $('#secondciv').on('input', function() {
     $('#civ2').toggle();
+  });
+
+  // Second Society toggle
+  $('#secondciv').on('input', function() {
+    $('#society2').toggle();
   });
 
   // Civilization selector
@@ -717,22 +750,26 @@ $(document).ready(function() {
         tradoptions.push(t);
       });
     });
-    updateTradSelector(tradoptions);
+    updateTradSelector(tradoptions, 'civ');
   });
 
   // Society selector
-  $('#society').on('input', function(e) {
-    charstats.society[0] = e.target.value;
-    // Update character sheet and civ checkbox
-    societies[e.target.value].traditions.forEach(function(t) {
-      charstats.traditions.push(t);
-      addTradSelector(t);
+  $('#society1, #society2').on('input', function(e) {
+    // Set character civilization(s)
+    let charsocs = [];
+    let tradoptions = [];
+    $('#societyblock select').each(function(i, e) {
+      charsocs.push($(e).val());
     });
-  });
+    charstats.society = charsocs;
 
-  // Second Society toggle
-  $('#secondciv').on('input', function() {
-    $('#society2').toggle();
+    // Update tradition options
+    charsocs.forEach(function(c) {
+      societies[c].traditions.forEach(function(t) {
+        tradoptions.push(t);
+      });
+    });
+    updateTradSelector(tradoptions, 'trad');
   });
 
   // Fill values based on Civ and Society.
@@ -745,7 +782,11 @@ $(document).ready(function() {
 
   // If you have no magical tradition...
   $('#nomag').on('input', function(e) {
-    addTradSelector('nomag');
+    if (e.target.checked) {
+      updateTradSelector(['nomag'], 'nomag', false);
+    } else {
+      updateTradSelector([], 'nomag', false);
+    }
   });
 
   // Toggle optional elements

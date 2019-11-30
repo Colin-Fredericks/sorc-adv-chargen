@@ -1,3 +1,7 @@
+.invisible {
+  display: none;
+}
+
 .nature-scores {
   display: grid;
   grid-template-columns: auto 1fr 4fr;
